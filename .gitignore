@@ -1,0 +1,27 @@
+# Rust build artifacts
+/target/
+Cargo.lock
+
+# Configuration files (may contain secrets)
+config.toml
+
+# Coverage reports
+lcov.info
+*.profraw
+*.profdata
+/coverage/
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local

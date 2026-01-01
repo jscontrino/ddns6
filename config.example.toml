@@ -1,0 +1,48 @@
+# DynV6 Configuration File Example
+# Copy this file to config.toml and adjust the values to your needs
+
+[server]
+# Address and port to bind the HTTP server
+bind_address = "0.0.0.0:8080"
+
+# Number of worker threads (optional, default: 4)
+workers = 4
+
+[cloudflare]
+# Your Cloudflare API token with DNS edit permissions
+# Create at: https://dash.cloudflare.com/profile/api-tokens
+# Required permissions: Zone.DNS (Edit)
+api_token = "your-cloudflare-api-token-here"
+
+# Your Cloudflare Zone ID
+# Find at: https://dash.cloudflare.com/ -> Select domain -> Overview (right sidebar)
+zone_id = "your-zone-id-here"
+
+# TTL for DNS records in seconds (optional, default: 300)
+ttl = 300
+
+# Host mappings: hostname -> Interface ID
+# Each client device has a unique Interface ID that gets combined with the dynamic prefix
+# The Interface ID remains constant even when the prefix changes
+
+[[hosts]]
+# Full hostname (FQDN) that will be updated in Cloudflare
+hostname = "device1.example.com"
+# Interface ID for this device - can be in various formats:
+# - Full IPv6 address: "::1" or "::a1b2:c3d4:e5f6:7890"
+# - Partial notation: "1" or "a1b2:c3d4:e5f6:7890"
+interface_id = "::1"
+
+[[hosts]]
+hostname = "device2.example.com"
+interface_id = "::2"
+
+[[hosts]]
+hostname = "nas.example.com"
+# Example of a more complex Interface ID (e.g., from SLAAC or manually configured)
+interface_id = "::a1b2:c3d4:e5f6:7890"
+
+# Add more hosts as needed
+# [[hosts]]
+# hostname = "server.example.com"
+# interface_id = "::100"
